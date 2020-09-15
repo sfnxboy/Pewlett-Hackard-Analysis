@@ -1,0 +1,69 @@
+--Retiring Emp by Title
+
+-- DELIVERABLE 1: Create a Retirement Titles table that holds all the titles of employees 
+-- who were born between January 1, 1952 and December 31, 1955.
+
+SELECT DISTINCT ON (e.emp_no) e.emp_no,
+e.first_name,
+e.last_name,
+t.title,
+t.from_date,
+t.to_Date
+INTO unique_titles
+FROM employees AS e
+INNER JOIN title AS t ON (e.emp_no = t.emp_no)
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+ORDER BY e.emp_no, t.title DESC;
+
+-- Find total count of employees by their most-recent job title who are about to retire
+
+SELECT COUNT(title)
+FROM retiring_titles
+WHERE (from_date BETWEEN '1985-01-01' AND '1988-12-31');
+
+-- Sort the Unique Titles table in ascending order by the employee 
+-- number and descending order by the last date of the most recent title.
+
+DELETE TABLE unique_titles;
+SELECT DISTINCT ON (e.emp_no) e.emp_no,
+e.first_name,
+e.last_name,
+t.title,
+t.from_date,
+t.to_Date
+INTO unique_titles
+FROM employees AS e
+INNER JOIN title AS t ON (e.emp_no = t.emp_no)
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31')
+ORDER BY e.emp_no, t.to_date DESC;
+
+-- Write another query in the file to retrieve the number of employees 
+-- by their most recent job title who are about to retire.
+
+SELECT COUNT(ut.emp_no), ut.title
+INTO retiring_titles_count
+FROM unique_titles AS ut
+GROUP BY ut.title
+ORDER BY COUNT(ut.emp_no) DESC;
+
+
+-- Mentorship Eligibility
+
+-- Deliverable 2: Using the ERD you created in this module as a reference 
+-- and your knowledge of SQL queries, create a mentorship-eligibility table that 
+-- holds the current employees who were born between January 1, 1965 and December 31, 1965.
+
+SELECT DISTINCT ON (e.emp_no) e.emp_no,
+e.first_name,
+e.last_name,
+e.birth_date,
+de.from_date,
+de.to_date,
+t.title
+INTO mentorship_eligibility
+FROM employees as e
+INNER JOIN dept_emp as de ON (de.emp_no = e.emp_no)
+INNER JOIN title as t ON (t.emp_no = e.emp_no)
+WHERE (de.to_date = '9999-01-01')
+AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
