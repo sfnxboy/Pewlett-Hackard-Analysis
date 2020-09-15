@@ -67,3 +67,11 @@ INNER JOIN dept_emp as de ON (de.emp_no = e.emp_no)
 INNER JOIN title as t ON (t.emp_no = e.emp_no)
 WHERE (de.to_date = '9999-01-01')
 AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+
+-- Create a table that groups mentor-eligible employees by title
+
+SELECT COUNT(me.emp_no), me.title
+INTO ementors_bytitle
+FROM mentorship_eligibility AS me
+GROUP BY me.title
+ORDER BY COUNT(me.emp_no) DESC;
