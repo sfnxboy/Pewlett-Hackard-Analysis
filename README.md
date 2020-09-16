@@ -1,5 +1,8 @@
 # Pewlett-Hackard-Analysis
 
+All created queries may be found in the PHE_DB_Queiries.txt file.
+All produced csv files may be found in the Data folder.
+
 # Overview and Purpose
 We will put our data modelling, engineering, and analysis skills to the test by applying our knowledge of data frames and tabular data to use. Pewlett-Hackard, a mock-company, has hired me to use my experience regarding datasets, databases, and SQL to help prepare for the large number of employees retiring from their company. The .csv files in the Data Folder include a number of datasets I created through PostgreSQL queries to help answer the company’s questions. The PHE_DB_Queries.txt file contains all the queries I created for this project. Throughout the rest of the READ_ME I will discuss two specific assignments. The Deliverable_Queries.txt file contains the set of queries used for these two assignments. The first assignment asks what the number of retiring employees is per title, and second assignment asks who is eligible to participate in a mentorship program to help train new employees to fill the void left by the retirees. I will discuss my results and findings of the two assignments after reviewing my process.
 
