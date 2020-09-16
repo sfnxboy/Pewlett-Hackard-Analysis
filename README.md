@@ -1,6 +1,6 @@
 # Pewlett-Hackard-Analysis
 
-All created queries may be found in the PHE_DB_Queiries.txt file.
+All created queries may be found in the PHE_DB_Queries.txt file.
 
 All produced CSV files may be found in the Data folder.
 
