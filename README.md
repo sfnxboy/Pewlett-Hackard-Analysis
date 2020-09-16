@@ -6,7 +6,8 @@ We will put our data modelling, engineering, and analysis skills to the test by 
 ## ERDs
 When I first assigned to this project, I knew I needed to develop a good outline of what I was working with. I created an entity relationship diagram (ERD) to visualize where the relationships exist between datasets. With a quick glance at the below ERD below, one can find what column headers can be found on each table, the datatypes of each column, primary/foreign keys, and how data is connected between tables. Database keys identify records from tables and establish relationships between tables. There are numerous types of keys. For our purposes, I utilized only primary and foreign keys. Primary keys are an important part of database design, and each table must include a primary key, they serve as a link between tables. Primary keys are characterized as a unique column of identifying values within a table. While primary keys contain unique identifiers for its respective dataset, a foreign key references another dataset's primary key.
 
-photo of data base
+![image](https://user-images.githubusercontent.com/68082808/93276418-6ed31c80-f78d-11ea-84a0-7e18f3f242f1.png)
+
 
 ## PostgreSQL
 I use the ERD to build a clean database in PostgreSQL. After importing the csv files into their respective tables, I set to work joining datasets and creating new tables to answer important questions. Pewlett-Hackard have many employees retiring soon, and they hired me to find all employees eligible for retirement. To answer their questions, I wrote queries in PostgreSQL to filter relevant data into unique datasets. For instance, after making a dataset of all employees who still work for the company who are also eligible for retirement, I created a query for a dataset that reveals the number of employees eligible for retirement per department.
@@ -50,10 +51,14 @@ ORDER BY e.emp_no, t.to_date DESC;
 
 After selecting a total of six columns from across two datasets, I made sure to include the DISTINCT ON clause to retrieve only the first occurrence of an employee by their employee ID number. I joined the two tables using an inner join because I wanted retrieved data to match on both tables. The WHERE clause filters out employees born outside of the specified dates, and lastly the ORDER BY clause lists the table in descending order on the count column. Below is the resulting table.
 
+![image](https://user-images.githubusercontent.com/68082808/93276429-7692c100-f78d-11ea-905a-b939607c20cc.png)
+
+
 ### Take-aways
 
 1.	There will are a total of 90,398 employees eligible for retirement according to the query below. 
  
+![image](https://user-images.githubusercontent.com/68082808/93276434-7c88a200-f78d-11ea-848e-dcedb3d0b4a5.png)
 
 
 2.	The Senior Engineer and Senior Staff departments will be seeing the greatest number of employees retiring. 
@@ -83,15 +88,18 @@ AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 
 The query is written similarly to the query written in the “The Number of Retiring Employees by Title” section above. The difference is in the WHERE clause. This query filters for employees still employed by the company and born between a different set of years. Below is the resulting dataset.
 
+![image](https://user-images.githubusercontent.com/68082808/93276445-827e8300-f78d-11ea-8a43-d8e46c000bff.png)
+
+
 ### Results
 
 1.	The query below indicates that there a total of 1,549 employees who meet the company’s mentorship-eligibility requirements.
  
-
+![image](https://user-images.githubusercontent.com/68082808/93276460-890cfa80-f78d-11ea-8aec-60017ba73263.png)
 
 
 2.	Using another query, I grouped rows of data by title, and found the total number of mentor-eligible employees per position. This query may be found in the Deliverable_Queries.txt file.
  
- 
+ ![image](https://user-images.githubusercontent.com/68082808/93276468-8dd1ae80-f78d-11ea-8f7f-172ae39aa0fa.png)
  
 # Summary
