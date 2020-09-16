@@ -103,3 +103,9 @@ The query is written similarly to the query written in the “The Number of Reti
  ![image](https://user-images.githubusercontent.com/68082808/93276468-8dd1ae80-f78d-11ea-8f7f-172ae39aa0fa.png)
  
 # Summary
+
+According to the data parsed above, there will are a total of 90,398 employees eligible for retirement out of a total 300,024 employees, just over 30%. Considering the worst-case scenario, their departure will leave a great void for the company to fill. The data parsed in the second assignment indicates that are only 1,549 employees who are eligible to take on some mentorship position. As it stands, that is a 1 to 59 ratio of mentor to mentee ratio. In my opinion that is a massive undertaking. In assignment two I created a query to append a new column to the table above. The column, retiring_count, as seen below, specifies the number of employees eligible to retire per position.
+
+![image](https://user-images.githubusercontent.com/68082808/93282525-97164780-f79c-11ea-9194-05b6128ec693.png)
+
+This may give us new insight. Considering all eligible mentors take the mentor position, and all eligible retirees, the ratio of mentor to new hire is one to 66 for the Senior Staff position. The company should find this very useful as now they can efficiently allocate funds and resources per position need. Nonetheless, I see that there will be cuts across the board.
