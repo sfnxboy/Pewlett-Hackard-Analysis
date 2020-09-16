@@ -75,3 +75,21 @@ INTO ementors_bytitle
 FROM mentorship_eligibility AS me
 GROUP BY me.title
 ORDER BY COUNT(me.emp_no) DESC;
+
+-- Create a table to compare number of eligible mentors and number of retirees per position (title)
+
+SELECT COUNT(me.emp_no), me.title
+INTO mentor_v_retiring
+FROM mentorship_eligibility AS me
+GROUP BY me.title
+ORDER BY COUNT(me.emp_no) DESC;
+
+SELECT mr.mentor_count, mr.title, rtc.count
+INTO mentor_v_retiring1
+FROM mentor_v_retiring AS mr
+LEFT JOIN retiring_titles_count AS rtc ON (mr.title = rtc.title)
+ORDER BY mr.mentor_count DESC;
+
+ALTER TABLE mentor_v_retiring1
+RENAME count TO retiring_count;
+SELECT * FROM mentor_v_retiring1
