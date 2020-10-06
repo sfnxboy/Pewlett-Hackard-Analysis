@@ -32,9 +32,7 @@ ORDER BY de.dept_no;
 To organize the counts, the GROUP BY clause is used to group rows of identical data, specified by the parameter. Aliases were utilized for involved datasets for readability. A left join was used in this query because we wanted all employees in the dataset current_emp to be included in the returned data. The resulting emp_count_by_department.csv file can be found in the Data folder.
 
 
-## Results
-
-### The Number of Retiring Employees by Title
+### Analysis One: The Number of Retiring Employees by Title
 
 It was crucial to join and filter tables to create the Retirement Titles table that holds all the titles of employees who were born between January 1, 1952 and December 31, 1955. Specifically, this is a list of all employees eligible for retirement.  Furthermore, I use the DISTINCT ON method because it is possible that an employee held several titles with their time at the company.
 
@@ -60,7 +58,7 @@ After selecting a total of six columns from across two datasets, we must make su
 ![image](https://user-images.githubusercontent.com/68082808/93276429-7692c100-f78d-11ea-905a-b939607c20cc.png)
 
 
-**Take-aways**
+**Results**
 
 1.	There will are a total of 90,398 employees eligible for retirement according to the query below. 
  
@@ -70,7 +68,7 @@ After selecting a total of six columns from across two datasets, we must make su
 2.	The Senior Engineer and Senior Staff departments will be seeing the greatest number of employees retiring. 
 
 
-## Employees Eligible for the Mentorship Program
+### Analysis Two: Employees Eligible for the Mentorship Program
 
 Using the ERD as a reference, with our knowledge of SQL queries we were assigned to create a mentorship-eligibility table that holds the current employees who were born between January 1, 1965 and December 31, 1965, and who are still employed.
 
@@ -97,7 +95,7 @@ The query above is written in a similar manner to the query written in the “Th
 ![image](https://user-images.githubusercontent.com/68082808/93276445-827e8300-f78d-11ea-8a43-d8e46c000bff.png)
 
 
-**Take-aways**
+**Results**
 
 1.	The query below indicates that there a total of 1,549 employees who meet the company’s mentorship-eligibility requirements.
  
@@ -110,9 +108,8 @@ The query above is written in a similar manner to the query written in the “Th
  
 ## Summary
 
-According to the data parsed above, there will are a total of 90,398 employees eligible for retirement out of a total 300,024 employees, just over 30%. Considering the worst-case scenario, that all employees eligible for retirement retire, their departure would leave a great void for the company to fill. The data parsed in the second assignment indicates that are only 1,549 employees who are eligible to take on some mentorship position. As it stands, that is a 1 to 59 ratio of mentor to mentee ratio. In my opinion that is a massive undertaking. An additional query was made to append a new column to the table above. The column, retiring count, as now seen below, specifies the number of employees eligible to retire per position.
+Our first assignment was to create a table that holds the titles of all employees who are eligible for retirement. According to the data parsed above, there will are a total of 90,398 employees eligible for retirement out of a total 300,024 employees, just over 30%. Considering the worst-case scenario, that all employees eligible for retirement retire, their departure would leave a great void for the company to fill. This result leads us to assignment two. To solve the issue of there being a great number of cuts across all departments, administration provided a solution, mentorship. In assignment two our objective was to find the number of employees eligible to take on mentorship positions to train up and coming staff members. The data parsed in the second assignment indicates that are only 1,549 employees eligible to take on some mentorship position. As it stands, that is a 1 to 59 ratio of mentor to mentee ratio. In my opinion that is a massive undertaking, but a step in the right direction. 
+
+An additional query was made to append a new column to the table above. The column, retiring count, as now seen below, specifies the number of employees eligible to retire per position. This may give Pewlett-Hackard new insight with regards to how it may want to distribute efforts across departments taking into account the number of employees eligible to take on a mentorship position per department and the number of employees eligible for retirement per department. For instance, considering all eligible mentors take on the mentor position, and all eligible retirees retire, the ratio of mentor to new hire is one to 66 for the Senior Staff position. The company may find these findings useful with regards to planning for the future.
 
 ![image](https://user-images.githubusercontent.com/68082808/93282525-97164780-f79c-11ea-9194-05b6128ec693.png)
-
-This may give Pewlett-Hackard new insight. Considering all eligible mentors take the mentor position, and all eligible retirees, the ratio of mentor to new hire is one to 66 for the Senior Staff position. The company may find these findings useful with regards to planning for the future.
-
