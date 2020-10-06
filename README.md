@@ -7,17 +7,17 @@ All produced CSV files may be found in the Data folder.
 All created queries relating to the READ_ME can be found in the Deliverable_Queries.txt file.
 
 ## Overview and Purpose
-We will put our data modelling, engineering, and analysis skills to the test by applying our knowledge of data frames and tabular data to use. Pewlett-Hackard, a mock-company, has hired me to use my experience regarding datasets, databases, and SQL to help prepare for the large number of employees retiring from their company. The CSV files in the Data Folder include a number of datasets I created through PostgreSQL queries to help answer the company’s questions. The PHE_DB_Queries.txt file contains all the queries I created for this project. Throughout the rest of the READ_ME I will discuss two specific assignments. The Deliverable_Queries.txt file contains the set of queries used for these two assignments. The first assignment asks what the number of retiring employees is per title, and second assignment asks who is eligible to participate in a mentorship program to help train new employees to fill the void left by the retirees. I will discuss my results and findings of the two assignments after reviewing my process.
+We will put our data modelling, engineering, and analysis skills to the test by applying our knowledge of data frames and tabular data to use. Pewlett-Hackard, a mock-company, has hired me to use my experience regarding datasets, and databases to help prepare for the large number of employees retiring from their company. The CSV files in the Data Folder include a number of datasets I created through PostgreSQL queries to help answer the company’s questions. The PHE_DB_Queries.txt file contains all the queries I created for this project. Throughout the rest of the READ_ME file I will discuss two specific assignments. The Deliverable_Queries.txt file contains the set of queries used for these two assignments. The first assignment asks for the number of retiring employees is per title, and second assignment asks for the names of those eligible to participate in a mentorship program to help train new employees to fill in the void left by the retirees. I will discuss my results and findings of the two assignments after reviewing my process.
 
 ## Process
 ### A Clean Workspace
-When dealing with multiple csv’s, it is best to begin by creating an outline. I created an entity relationship diagram (ERD) to visualize where the relationships exist between datasets. With a quick glance at the below ERD below, one can find what column headers can be found on each table, the datatypes of each column, primary/foreign keys, and how data is connected between tables. Database keys identify records from tables and establish relationships between tables. There are numerous types of keys. For our purposes, I utilized only primary and foreign keys. Primary keys are an important part of database design, and each table must include a primary key, they serve as a link between tables. Primary keys are characterized as either a single or combination of fields which uniquely identify a row in the table.A foreign key in one table represents the primary key of another table. The relationship between the two is created by referencing each key.
+When dealing with multiple csv’s, it is best to begin by creating an outline. An entity relationship diagram (ERD) helps in visualizing where the relationships may exist between datasets. With a quick glance at the below ERD below, one may readily find what column headers can be found on each table, the datatype of each column, the primary/foreign keys of each table, and how data is connected between tables. Database keys identify records from tables and establish relationships between tables. There are numerous types of keys. For our purposes, we utilize only primary and foreign keys. Primary keys are an important part of database design, and each table must include a primary key. Primary keys serve as a link between tables. They are characterized as either a single field or combination of fields which uniquely identify a row in the table. A foreign key in one table represents the primary key of another table. The relationship between the two is created by referencing each key.
 
 ![image](https://user-images.githubusercontent.com/68082808/93276418-6ed31c80-f78d-11ea-84a0-7e18f3f242f1.png)
 
 
 ### PostgreSQL
-I use the ERD to build a clean database in PostgreSQL. After importing the CSV files into their respective tables, I set to work joining datasets and creating new tables to answer important questions. Pewlett-Hackard have many employees retiring soon, and they hired me to find all employees eligible for retirement. To answer their questions, I wrote queries in PostgreSQL to filter relevant data into unique datasets. For instance, after making a dataset of all employees who still work for the company who are also eligible for retirement, I created a query for a dataset that reveals the number of employees eligible for retirement per department.
+We use the ERD to build a clean database in PostgreSQL. After importing the CSV files into their respective tables, I set to work joining datasets and creating new tables to answer important questions. Pewlett-Hackard have many employees retiring soon, and our objective is to find all employees eligible for retirement. To answer their questions, I wrote queries in PostgreSQL to filter relevant data into unique datasets. For instance, after creating a dataset of all employees who still work for the company who are also eligible for retirement, a query is written inside of PGAdmin that then returns the number of employees eligible for retirement per department.
 
 ```
 -- Employee count by department number
@@ -29,7 +29,7 @@ on ce.emp_no = de.emp_no
 GROUP BY de.dept_no
 ORDER BY de.dept_no;
 ```
-To organize the counts, the GROUP BY clause is used to group rows of identical data, specified by the parameter. Aliases were utilized for involved datasets. A left join was used in this query because we wanted all employees in the dataset current_emp to be included in the returned data. The resulting emp_count_by_department.csv file can be found in the Data folder.
+To organize the counts, the GROUP BY clause is used to group rows of identical data, specified by the parameter. Aliases were utilized for involved datasets for readability. A left join was used in this query because we wanted all employees in the dataset current_emp to be included in the returned data. The resulting emp_count_by_department.csv file can be found in the Data folder.
 
 
 ## Results
@@ -55,7 +55,7 @@ AND (hire_date BETWEEN '1985-01-01' AND '1988-12-31')
 ORDER BY e.emp_no, t.to_date DESC;
 ```
 
-After selecting a total of six columns from across two datasets, I made sure to include the DISTINCT ON clause to retrieve only the first occurrence of an employee by their employee ID number. I joined the two tables using an inner join because I wanted retrieved data to match on both tables. The WHERE clause filters out employees born outside of the specified dates, and lastly the ORDER BY clause lists the table in descending order on the count column. Below is the resulting table.
+After selecting a total of six columns from across two datasets, we must make sure to include the DISTINCT ON clause to retrieve only the first occurrence of an employee by their employee ID number. Joining the two tables using an inner join retrieves data that matches on both tables. The WHERE clause filters out employees born outside of the specified dates, and lastly the ORDER BY clause lists the table in descending order on the count column. Below is the resulting table.
 
 ![image](https://user-images.githubusercontent.com/68082808/93276429-7692c100-f78d-11ea-905a-b939607c20cc.png)
 
@@ -72,7 +72,7 @@ After selecting a total of six columns from across two datasets, I made sure to 
 
 ## Employees Eligible for the Mentorship Program
 
-Using the ERD as a reference, with my knowledge of SQL queries I was assigned to create a mentorship-eligibility table that holds the current employees who were born between January 1, 1965 and December 31, 1965, and who are still employed.
+Using the ERD as a reference, with our knowledge of SQL queries we were assigned to create a mentorship-eligibility table that holds the current employees who were born between January 1, 1965 and December 31, 1965, and who are still employed.
 
 **Method**
 
@@ -92,7 +92,7 @@ WHERE (de.to_date = '9999-01-01')
 AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ```
 
-The query is written similarly to the query written in the “The Number of Retiring Employees by Title” section above. The difference is in the WHERE clause. This query filters for employees still employed by the company and born between a different set of years. Below is the resulting dataset.
+The query above is written in a similar manner to the query written in the “The Number of Retiring Employees by Title” section above. The difference is in the WHERE clause. This query filters for employees still employed by the company and born between a different set of years. Below is the resulting dataset.
 
 ![image](https://user-images.githubusercontent.com/68082808/93276445-827e8300-f78d-11ea-8a43-d8e46c000bff.png)
 
@@ -110,8 +110,9 @@ The query is written similarly to the query written in the “The Number of Reti
  
 ## Summary
 
-According to the data parsed above, there will are a total of 90,398 employees eligible for retirement out of a total 300,024 employees, just over 30%. Considering the worst-case scenario, their departure will leave a great void for the company to fill. The data parsed in the second assignment indicates that are only 1,549 employees who are eligible to take on some mentorship position. As it stands, that is a 1 to 59 ratio of mentor to mentee ratio. In my opinion that is a massive undertaking. In assignment two I created a query to append a new column to the table above. The column, retiring count, as seen below, specifies the number of employees eligible to retire per position.
+According to the data parsed above, there will are a total of 90,398 employees eligible for retirement out of a total 300,024 employees, just over 30%. Considering the worst-case scenario, that all employees eligible for retirement retire, their departure would leave a great void for the company to fill. The data parsed in the second assignment indicates that are only 1,549 employees who are eligible to take on some mentorship position. As it stands, that is a 1 to 59 ratio of mentor to mentee ratio. In my opinion that is a massive undertaking. An additional query was made to append a new column to the table above. The column, retiring count, as now seen below, specifies the number of employees eligible to retire per position.
 
 ![image](https://user-images.githubusercontent.com/68082808/93282525-97164780-f79c-11ea-9194-05b6128ec693.png)
 
-This may give us new insight. Considering all eligible mentors take the mentor position, and all eligible retirees, the ratio of mentor to new hire is one to 66 for the Senior Staff position. The company should find this very useful as now they can efficiently allocate funds and resources per position need. Nonetheless, I see that there will be cuts across the board.
+This may give Pewlett-Hackard new insight. Considering all eligible mentors take the mentor position, and all eligible retirees, the ratio of mentor to new hire is one to 66 for the Senior Staff position. The company may find these findings useful with regards to planning for the future.
+
